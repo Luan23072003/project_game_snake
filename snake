@@ -81,6 +81,7 @@ void CaiDat()
   {
         if(kbhit())
         {
+		    Hiden(0);
   		    key = getch();
   		    switch (key)
             {
