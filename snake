@@ -42,7 +42,12 @@ void VeMau(WORD color)
     Thuoc_Tinh &= 0xfff0; Thuoc_Tinh |= color;
     SetConsoleTextAttribute(Dau_Ra, Thuoc_Tinh);
 }
-
+void Hiden(bool CursorVisibility)
+{
+	HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE);
+	CONSOLE_CURSOR_INFO cursor = { 1, CursorVisibility };
+	SetConsoleCursorInfo(handle, &cursor);
+}
 // thông tin nhóm
 void ThongTin()
 {
@@ -76,6 +81,7 @@ void CaiDat()
   {
         if(kbhit())
         {
+		    Hiden(0);
   		    key = getch();
   		    switch (key)
             {
